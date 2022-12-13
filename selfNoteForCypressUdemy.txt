@@ -305,7 +305,7 @@ Target attribute -- The target attribute specifies where to open the linked docu
     review - 1. https://www.w3schools.com/tags/att_a_target.asp
                 2. https://www.w3schools.com/jquery/html_removeattr.asp
 
- ==================================================================
+==================================================================
                 -----Sec - 7, Lec - 34-----
 ==================================================================
 

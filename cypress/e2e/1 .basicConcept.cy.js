@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe('Navigating a url', () => {
-  it('Opening practice website from rahul shetty', () => {
+  it('Opening practice website GreenKart from rahul shetty', () => {
     cy.visit('https://rahulshettyacademy.com/seleniumPractise/#/');
 
     cy.get('.search-keyword').type('ca').click().wait(2000);
@@ -37,7 +37,10 @@ describe('Navigating a url', () => {
     switch to an index Element, how to type text in the input box
     */
 
-    // suppose we want to print the GreenCart logo text inside testRunner
+    // to assert if logo text is correctly displayed
+    cy.get('.brand.greenLogo').should('have.text', 'GREENKART');
+
+    // suppose we want to print the GreenCart logo text inside testRunner log
     cy.get('.brand.greenLogo').then(function (logoName) {
       cy.log(logoName.text());
     });
