@@ -1,0 +1,241 @@
+==================================================================
+                -----Sec - 3, Lec - 10-----
+==================================================================
+#Framework:
+In cypress we can use Mocha/Jasmine framework same as TestNg/
+JUnit in Selenium.
+
+show suggestion:
+put thios on every new cy file's first line to show suggestion while coding
+/// <reference types="cypress" />
+
+describe - means test Suite body, and it - means test case,
+and function - means every test Suite/Case's body.
+System to write- describe
+        describe('Test_Suite_Name', Function()
+        {
+        
+        it('Test_Case_Name', Function()
+        { 
+
+            //test steps here
+        })
+     
+        })
+Here, we need to use curly braces for the main Suite and Test_Case_Name
+and Test step script.
+
+#Cypress built-in commands:
+Open URL:
+visit - In Selenium we needed to use driver.get("url"); but for 
+cypress we need to use cy.visit("url");
+
+==================================================================
+                -----Sec - 3, Lec - 11-----
+==================================================================
+In cypress, each test file called as Spec file
+
+Headless: path run
+through command line, cypress wil run headless. It means that
+every test step will run but won't open the browser in the front-
+end. It will run every execution in the back-end and the dafault 
+browser is electron, selected by cypress.
+
+Headed: path run --Headed
+Browser will open and show every execution in the front-end
+
+Select Browser:
+to run test in a specific browser we need to write the browser
+name in tthe command line.
+example - path run --browser browser_name(firefox/chrome.edge)
+
+Note - since cypress updates command every now and then you can 
+visit cypress website for the latest command, if one is not 
+working properly.
+
+==================================================================
+                -----Sec - 3, Lec - 12-----
+==================================================================
+Folders in Cypress Directory:
+
+Fixtures: for Data-Driven
+Let's say you have your data in Excel, and if you want to use 
+that data, you have to write at least ten lines of codes  to 
+connect to your Excel.
+
+To get the dependencies so that your test can talk to Excel, 
+you need to go to workbook worksheet, scan the column, scan 
+the row and then pull it out, isn't it?
+
+It's a heavy code, but if you place in fixtures, all your test 
+data, your test cases are enough intelligent to capture all 
+the data stored in the fixtures with one simple command called 
+fixture.
+
+Integration: Test Case
+Cypress guides us to write all the test cases in the Integration 
+folder by creating the folder.
+
+Support: Reusable method/inheritance(extends)
+we can put methods in this folder that needs to use in many test 
+cases for multiple use. It's like java inheritance method.
+
+==================================================================
+                -----Sec - 4, Lec - 14-----
+==================================================================
+Locator:
+Cypress only support locator or path as CSS selectors, not the others
+such as by ID, name, class name, xpath etc.
+So in order to use these paths, wee need to convert them as CSS path.
+# Path conversion syntax-
+ id -> #idName
+ className -> .className (no space between names, put . to if there's any)
+ CSS selector -> tagname[attribute='text']
+	1. data attribute - cy.get('[data-test-id="test-example"]')
+	2. href attribute containing the word "questions" -
+				- cy.get('a[href*="questions"]')
+	3. id that starts with "local-" -
+				- cy.get('[id^=local-]')is
+	4. id that ends with "-remote" -
+				- cy.get('[id$=-remote]')
+	5. id that starts with "local-" and ends with "-remote" -
+				-  cy.get('[id^=local-][id$=-remote]')
+
+and to get all suggestion methods after a command we can use,
+/// <reference types="Cypress" /> in the top of the command body to get
+all the suggestions.
+
+Scrolling methods:
+ 1. by percentage -> 
+				cy.window().scrollTo('0%', '25%').wait(1500);
+ 				cy.window().scrollTo('0%', '50%').wait(1500);
+ 				cy.window().scrollTo('0%', '75%').wait(1500);
+ 				cy.window().scrollTo('0%', '100%').wait(1500);
+
+ 2. scroll to top/bottom at ease ->
+ 			cy.window().scrollTo('bottom', {
+      				ensureScrollable: false,
+      				duration: 6000,
+     		 		easing: 'swing',
+    			});
+
+    			cy.window().scrollTo('top', {
+     				ensureScrollable: false,
+      				duration: 3000,
+      				easing: 'swing',
+  			});
+
+==================================================================
+                -----Sec - 4, Lec - 15-----
+==================================================================
+in the braces we can use both single/double quotations. also after a
+line we dont need to use ';' like in java.
+
+cy.get <==> driver.findElement
+
+cammand to locate a path-
+cy.get('path name ins CSS')
+cammand to input something in the box of a page-
+type('text')
+in a line - cy.get('path name').type('text')
+
+in selenium 'thread.sleep' to wait, in cypress 'wait' to wait
+cy.wait(2000) , no string fromat in setting time, time should be witen in (ms) format.
+
+==================================================================
+                -----Sec - 4, Lec - 16-----
+==================================================================
+get in seleium opens a url, get is cypress finds a web element
+
+Wait:
+suppose we search something in a page of a search box. instead of
+loading page in just brings the search result.
+If the page loads, or there's an animation while showing the results
+we dont need to use wait method, cypress automatically senses the
+loading scenario.
+If there is no loading scenario we need to use wait method to make it
+delay while loadind gets completed.
+
+==================================================================
+                -----Sec - 4, Lec - 17-----
+==================================================================
+Visible products:
+While counting search results cypress has the ability to pick hidden
+items also with the same matching locator path command. In order to
+select only visible one's we need to use :visible after the product
+command. For example, if the get cammand is product, we need to write
+get('.product:visible')
+
+In cypess we can see every single screenshots of every single step.
+
+Whenever we use 'save all' the commands in VS code cypress will automatically
+execute the test again by itself.
+
+==================================================================
+                -----Sec - 5, Lec - 19-----
+==================================================================
+parent-child chaining:
+suppose we we want to verify search result elements with different way, and
+not using :element method. so we can use find method. find will find all the
+visible elements inside the selector, not in the outside.
+
+command - cy.get('.products').find('.product').should('have.length',4)
+
+Method:
+find - to get string element inside a DOM block
+eq() -  to find the exact index product among a list of products, and the number
+inside the braces will act as an array. for example, if you put 2 it will
+select the third element(0,1,2....)
+contains() - will find the exact written item inside an elememt and
+click on it
+click() - to click on a option
+
+==================================================================
+                -----Sec - 5, Lec - 20-----
+==================================================================
+Method:
+each() - Iterate over an array of DOM elements
+Here, while we put 'ca' in the search box we found 4 item in the search result
+so each method will act like a loop to go through every single sub-element and
+find the exact text/string that we are looking for.
+command - $e1.find('.product-name').text() {
+
+if()
+)}
+
+includes() - to find sub-string in a string itself
+
+text() - will get an elements contained text
+
+wrap() - Yield the object passed into .wrap(). If the object is a promise, yield its resolved value.
+
+==================================================================
+                -----Sec - 5, Lec - 21-----
+==================================================================
+anything based on node.js is asynchronous in nature and so is cypress. to make it synchronous 
+we needed to put then() after every command. Thats why the cypress took this noisey step
+to the backend and made us think all the commands runs synchronously but it's not.
+
+So if we start a command as default, like cy. ... then() will be added at the beackend process
+but if we use custokm command then we have to add then() manually at the end of a command
+
+for exampel, we want to print an element text in the testRunner
+cy.get('').then(function(functionName){
+	cy.log(functionName.text())
+})
+
+==================================================================
+                -----Sec - 5, Lec - 22-----
+==================================================================
+
+
+
+
+
+
+
+
+
+
+
+
