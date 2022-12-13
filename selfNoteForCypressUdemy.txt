@@ -225,8 +225,106 @@ cy.get('').then(function(functionName){
 })
 
 ==================================================================
-                -----Sec - 5, Lec - 22-----
+                -----Sec - 5, Lec - 23-----
 ==================================================================
+
+if we want ro add non-cypress commands we need to add then() and the put the commands
+inside the then() function
+
+Assertion:
+it's from chai library to validate something expected. we use should() to Assert
+something.
+
+==================================================================
+                -----Sec - 6, Lec - 27-----
+==================================================================
+
+CheckBox:
+
+check() - to tik chechboxes
+should('be.checked') - to check a behavious, like if the checkbox has been checked
+
+for cancatanation we can use and() fro two consequtive same command. for example,
+cy.get('#checkBoxOption1').check().should('be.checked').and('have.')
+-- here if we use and() we dont have to writr should everytime
+
+==================================================================
+                -----Sec - 6, Lec - 28-----
+==================================================================
+
+Dropdown:
+
+two types -- 
+	1. static -  with fixed options - tag name will be select
+	2. dynamic - options will be visible according to the given input - 
+
+for static we need to use select() after get and put value, text, or index number inside it
+
+==================================================================
+                -----Sec - 6, Lec - 29-----
+==================================================================
+
+fro dynamic we can use usual method.
+
+if we want to visit from parent to child element we can use parent locator then space and the child tag name
+fro example parent locator path with class - cy.get('.ui-menu-item') and child tag name is div
+so, if we want to move from parent to child we can use like this -
+		cy.get('.ui-menu-item div') - and we will be able to move from parent to child
+
+
+ ==================================================================
+                -----Sec - 6, Lec - 30-----
+==================================================================
+fro tick buttons we can use both click() and check()
+
+ ==================================================================
+                -----Sec - 7, Lec - 32-----
+==================================================================
+Popups:
+
+cypress handles alerts by itself. we dont need to use any extra commands.
+
+Cypress Event: Dev part to view alert data that usually gets perfromed in the backend
+
+	window:alert - need to use on()
+
+ ==================================================================
+                -----Sec - 7, Lec - 33-----
+==================================================================
+
+Tab Parent-Child:
+
+Target attribute -- The target attribute specifies where to open the linked document:
+	for example -- <a href="https://www.w3schools.com" target="_blank">Visit W3Schools</a>
+
+    if the element having 'target' attribute, it will open it on a new tab.
+    but we can work with new tab if the link opens in the same window.
+    so, we need to manipulate DOM to open new tab's link on the same window to work continuously
+    and, we need to remove the 'Target' attribute from the element -- with 'invoke' command
+    Here, invoke -- jQuery method to remove attribute
+    review - 1. https://www.w3schools.com/tags/att_a_target.asp
+                2. https://www.w3schools.com/jquery/html_removeattr.asp
+
+ ==================================================================
+                -----Sec - 7, Lec - 34-----
+==================================================================
+
+Browser Navigation:
+
+cy.go()
+	-- with 'back' or 'forward'
+	-- with -1 and 1
+
+
+
+
+
+
+
+
+
+
+
 
 
 
