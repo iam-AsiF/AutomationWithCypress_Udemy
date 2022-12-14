@@ -84,22 +84,24 @@ cases for multiple use. It's like java inheritance method.
                 -----Sec - 4, Lec - 14-----
 ==================================================================
 Locator:
-Cypress only support locator or path as CSS selectors, not the others
-such as by ID, name, class name, xpath etc.
-So in order to use these paths, wee need to convert them as CSS path.
-# Path conversion syntax-
- id -> #idName
- className -> .className (no space between names, put . to if there's any)
- CSS selector -> tagname[attribute='text']
-	1. data attribute - cy.get('[data-test-id="test-example"]')
-	2. href attribute containing the word "questions" -
-				- cy.get('a[href*="questions"]')
-	3. id that starts with "local-" -
-				- cy.get('[id^=local-]')is
-	4. id that ends with "-remote" -
-				- cy.get('[id$=-remote]')
-	5. id that starts with "local-" and ends with "-remote" -
-				-  cy.get('[id^=local-][id$=-remote]')
+    Cypress only support locator or path as CSS selectors, not the others
+    such as by ID, name, class name, xpath etc.
+    So in order to use these paths, wee need to convert them as CSS path.
+    # Path conversion syntax-
+    id -> #idName
+    className -> .className (no space between names, put . to if there's any)
+    CSS selector -> tagname[attribute='text']
+        1. data attribute - cy.get('[data-test-id="test-example"]')
+        2. href attribute containing the word "questions" -
+                    - cy.get('a[href*="questions"]')
+        3. id that starts with "local-" -
+                    - cy.get('[id^=local-]')is
+        4. id that ends with "-remote" -
+                    - cy.get('[id$=-remote]')
+        5. id that starts with "local-" and ends with "-remote" -
+                    -  cy.get('[id^=local-][id$=-remote]')
+    CSS selector to find nth child -
+            syntax -  parentTag childTag:nth-child('text')
 
 and to get all suggestion methods after a command we can use,
 /// <reference types="Cypress" /> in the top of the command body to get
@@ -131,16 +133,16 @@ Scrolling methods:
 in the braces we can use both single/double quotations. also after a
 line we dont need to use ';' like in java.
 
-cy.get <==> driver.findElement
+    cy.get <==> driver.findElement
 
 cammand to locate a path-
-cy.get('path name ins CSS')
-cammand to input something in the box of a page-
-type('text')
-in a line - cy.get('path name').type('text')
+    cy.get('path name ins CSS')
+    cammand to input something in the box of a page-
+    type('text')
+    in a line - cy.get('path name').type('text')
 
 in selenium 'thread.sleep' to wait, in cypress 'wait' to wait
-cy.wait(2000) , no string fromat in setting time, time should be witen in (ms) format.
+    cy.wait(2000) , no string fromat in setting time, time should be witen in (ms) format.
 
 ==================================================================
                 -----Sec - 4, Lec - 16-----
@@ -160,11 +162,11 @@ delay while loadind gets completed.
                 -----Sec - 4, Lec - 17-----
 ==================================================================
 Visible products:
-While counting search results cypress has the ability to pick hidden
-items also with the same matching locator path command. In order to
-select only visible one's we need to use :visible after the product
-command. For example, if the get cammand is product, we need to write
-get('.product:visible')
+    While counting search results cypress has the ability to pick hidden
+    items also with the same matching locator path command. In order to
+    select only visible one's we need to use :visible after the product
+    command. For example, if the get cammand is product, we need to write
+    get('.product:visible')
 
 In cypess we can see every single screenshots of every single step.
 
@@ -175,39 +177,39 @@ execute the test again by itself.
                 -----Sec - 5, Lec - 19-----
 ==================================================================
 parent-child chaining:
-suppose we we want to verify search result elements with different way, and
-not using :element method. so we can use find method. find will find all the
-visible elements inside the selector, not in the outside.
+    suppose we we want to verify search result elements with different way, and
+    not using :element method. so we can use find method. find will find all the
+    visible elements inside the selector, not in the outside.
 
-command - cy.get('.products').find('.product').should('have.length',4)
+    command - cy.get('.products').find('.product').should('have.length',4)
 
 Method:
-find - to get string element inside a DOM block
-eq() -  to find the exact index product among a list of products, and the number
-inside the braces will act as an array. for example, if you put 2 it will
-select the third element(0,1,2....)
-contains() - will find the exact written item inside an elememt and
-click on it
-click() - to click on a option
+    find - to get string element inside a DOM block
+    eq() -  to find the exact index product among a list of products, and the number
+    inside the braces will act as an array. for example, if you put 2 it will
+    select the third element(0,1,2....)
+    contains() - will find the exact written item inside an elememt and
+    click on it
+    click() - to click on a option
 
 ==================================================================
                 -----Sec - 5, Lec - 20-----
 ==================================================================
 Method:
-each() - Iterate over an array of DOM elements
-Here, while we put 'ca' in the search box we found 4 item in the search result
-so each method will act like a loop to go through every single sub-element and
-find the exact text/string that we are looking for.
-command - $e1.find('.product-name').text() {
+    each() - Iterate over an array of DOM elements
+    Here, while we put 'ca' in the search box we found 4 item in the search result
+    so each method will act like a loop to go through every single sub-element and
+    find the exact text/string that we are looking for.
+    command - $e1.find('.product-name').text() {
 
-if()
-)}
+    if()
+    )}
 
-includes() - to find sub-string in a string itself
+    includes() - to find sub-string in a string itself
 
-text() - will get an elements contained text
+    text() - will get an elements contained text
 
-wrap() - Yield the object passed into .wrap(). If the object is a promise, yield its resolved value.
+    wrap() - Yield the object passed into .wrap(). If the object is a promise, yield its resolved value.
 
 ==================================================================
                 -----Sec - 5, Lec - 21-----
@@ -220,9 +222,9 @@ So if we start a command as default, like cy. ... then() will be added at the be
 but if we use custokm command then we have to add then() manually at the end of a command
 
 for exampel, we want to print an element text in the testRunner
-cy.get('').then(function(functionName){
-	cy.log(functionName.text())
-})
+    cy.get('').then(function(functionName){
+        cy.log(functionName.text())
+    })
 
 ==================================================================
                 -----Sec - 5, Lec - 23-----
@@ -232,8 +234,13 @@ if we want ro add non-cypress commands we need to add then() and the put the com
 inside the then() function
 
 Assertion:
-it's from chai library to validate something expected. we use should() to Assert
-something.
+    it's from chai library to validate something expected. we use should() to Assert
+    something.
+
+    To use two consequtive should we can use and fro the second time
+    for example, 
+                            cy.get().should().should()
+    alternative -     cy.get().should().and()
 
 ==================================================================
                 -----Sec - 6, Lec - 27-----
@@ -241,12 +248,12 @@ something.
 
 CheckBox:
 
-check() - to tik chechboxes
-should('be.checked') - to check a behavious, like if the checkbox has been checked
+    check() - to tik chechboxes
+    should('be.checked') - to check a behavious, like if the checkbox has been checked
 
-for cancatanation we can use and() fro two consequtive same command. for example,
-cy.get('#checkBoxOption1').check().should('be.checked').and('have.')
--- here if we use and() we dont have to writr should everytime
+    for cancatanation we can use and() fro two consequtive same command. for example,
+    cy.get('#checkBoxOption1').check().should('be.checked').and('have.')
+    -- here if we use and() we dont have to writr should everytime
 
 ==================================================================
                 -----Sec - 6, Lec - 28-----
@@ -264,27 +271,27 @@ for static we need to use select() after get and put value, text, or index numbe
                 -----Sec - 6, Lec - 29-----
 ==================================================================
 
-fro dynamic we can use usual method.
+for dynamic we can use usual method.
 
-if we want to visit from parent to child element we can use parent locator then space and the child tag name
-fro example parent locator path with class - cy.get('.ui-menu-item') and child tag name is div
-so, if we want to move from parent to child we can use like this -
-		cy.get('.ui-menu-item div') - and we will be able to move from parent to child
+    if we want to visit from parent to child element we can use parent locator then space and the child tag name
+    fro example parent locator path with class - cy.get('.ui-menu-item') and child tag name is div
+    so, if we want to move from parent to child we can use like this -
+    cy.get('.ui-menu-item div') - and we will be able to move from parent to child
 
 
  ==================================================================
                 -----Sec - 6, Lec - 30-----
 ==================================================================
-fro tick buttons we can use both click() and check()
+for tick buttons we can use both click() and check()
 
  ==================================================================
                 -----Sec - 7, Lec - 32-----
 ==================================================================
 Popups:
 
-cypress handles alerts by itself. we dont need to use any extra commands.
+    cypress handles alerts by itself. we dont need to use any extra commands.
 
-Cypress Event: Dev part to view alert data that usually gets perfromed in the backend
+    Cypress Event: Dev part to view alert data that usually gets perfromed in the backend
 
 	window:alert - need to use on()
 
@@ -295,7 +302,7 @@ Cypress Event: Dev part to view alert data that usually gets perfromed in the ba
 Tab Parent-Child:
 
 Target attribute -- The target attribute specifies where to open the linked document:
-	for example -- <a href="https://www.w3schools.com" target="_blank">Visit W3Schools</a>
+for example -- <a href="https://www.w3schools.com" target="_blank">Visit W3Schools</a>
 
     if the element having 'target' attribute, it will open it on a new tab.
     but we can work with new tab if the link opens in the same window.
@@ -311,9 +318,16 @@ Target attribute -- The target attribute specifies where to open the linked docu
 
 Browser Navigation:
 
-cy.go()
-	-- with 'back' or 'forward'
-	-- with -1 and 1
+    cy.go()
+	    -- with 'back' or 'forward'
+	    -- with -1 and 1
+
+==================================================================
+                -----Sec - 7, Lec - 34-----
+==================================================================
+Web Table:
+    CSS selector to find nth child -
+        syntax -  parentTag childTag:nth-child('text')
 
 
 
